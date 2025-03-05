@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NID Verification Site - Setup and Usage Guide</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 1200px;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        pre {
+            position: relative;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            padding: 5px 10px;
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .copy-btn:hover {
+            background: #e9ecef;
+        }
+        .note {
+            background: #e1f5fe;
+            padding: 15px;
+            border-left: 4px solid #03a9f4;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .warning {
+            background: #fff3e0;
+            padding: 15px;
+            border-left: 4px solid #ff9800;
+            margin: 20px 0;
+            border-radius: 4px;
+        }
+        .nav-pills .nav-link {
+            margin: 5px;
+            border-radius: 5px;
+        }
+        .nav-pills .nav-link.active {
+            background-color: #0d6efd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center mb-5">
+            <i class="fas fa-book-reader me-2"></i>
+            NID Verification Site - Complete Setup and Usage Guide
+        </h1>
+        
+        <nav class="nav nav-pills flex-column flex-sm-row mb-4">
+            <a class="flex-sm-fill text-sm-center nav-link active" href="#installation">
+                <i class="fas fa-download me-2"></i>Installation
+            </a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="#configuration">
+                <i class="fas fa-cogs me-2"></i>Configuration
+            </a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="#user-guide">
+                <i class="fas fa-user me-2"></i>User Guide
+            </a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="#admin-guide">
+                <i class="fas fa-user-shield me-2"></i>Admin Guide
+            </a>
+            <a class="flex-sm-fill text-sm-center nav-link" href="#troubleshooting">
+                <i class="fas fa-wrench me-2"></i>Troubleshooting
+            </a>
+        </nav>
+
+        <div class="accordion" id="guideAccordion">
+            <!-- Installation Section -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="installation">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInstallation">
+                        <i class="fas fa-download me-2"></i>Installation Guide
+                    </button>
+                </h2>
+                <div id="collapseInstallation" class="accordion-collapse collapse show" data-bs-parent="#guideAccordion">
+                    <div class="accordion-body">
+                        <h3>Local Development Setup</h3>
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-list me-2"></i>Prerequisites
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item"><i class="fab fa-php me-2"></i>PHP 7.4 or higher</li>
+                                    <li class="list-group-item"><i class="fas fa-database me-2"></i>MySQL 5.7 or higher</li>
+                                    <li class="list-group-item"><i class="fas fa-server me-2"></i>Apache/Nginx</li>
+                                    <li class="list-group-item"><i class="fas fa-box me-2"></i>Composer</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4><i class="fas fa-code-branch me-2"></i>Clone Repository</h4>
+                            <pre><code>git clone https://github.com/RaiyanRafid/NID-Verification-Site.git
+cd NID-Verification-Site</code><button class="copy-btn" data-clipboard-target="#clone-command"><i class="far fa-copy"></i></button></pre>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4><i class="fas fa-box-open me-2"></i>Install Dependencies</h4>
+                            <pre><code>composer install</code><button class="copy-btn" data-clipboard-target="#composer-command"><i class="far fa-copy"></i></button></pre>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4><i class="fas fa-database me-2"></i>Database Setup</h4>
+                            <pre><code>mysql -u root -p
+CREATE DATABASE nid_verification;
+exit;</code><button class="copy-btn" data-clipboard-target="#db-command"><i class="far fa-copy"></i></button></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configuration Section -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="configuration">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseConfiguration">
+                        <i class="fas fa-cogs me-2"></i>Configuration Guide
+                    </button>
+                </h2>
+                <div id="collapseConfiguration" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                    <div class="accordion-body">
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-database me-2"></i>Database Configuration
+                            </div>
+                            <div class="card-body">
+                                <pre><code>// config/database.php
+define('DB_HOST', 'localhost');
+define('DB_USER', 'your_username');
+define('DB_PASS', 'your_password');
+define('DB_NAME', 'your_database');</code><button class="copy-btn" data-clipboard-target="#db-config"><i class="far fa-copy"></i></button></pre>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <i class="fas fa-envelope me-2"></i>Email Configuration
+                            </div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">SMTP Host</li>
+                                    <li class="list-group-item">SMTP Port</li>
+                                    <li class="list-group-item">SMTP Username</li>
+                                    <li class="list-group-item">SMTP Password</li>
+                                    <li class="list-group-item">From Email</li>
+                                    <li class="list-group-item">From Name</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- User Guide Section -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="user-guide">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseUserGuide">
+                        <i class="fas fa-user me-2"></i>User Guide
+                    </button>
+                </h2>
+                <div id="collapseUserGuide" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                    <div class="accordion-body">
+                        <h3>Submitting Verification Request</h3>
+                        <ol>
+                            <li>Visit the website homepage</li>
+                            <li>Fill in personal details:
+                                <ul>
+                                    <li>First Name</li>
+                                    <li>Middle Name (optional)</li>
+                                    <li>Last Name</li>
+                                    <li>Address</li>
+                                    <li>Phone Number</li>
+                                    <li>Email Address</li>
+                                </ul>
+                            </li>
+                            <li>Select document type:
+                                <ul>
+                                    <li>NID</li>
+                                    <li>Passport</li>
+                                    <li>Birth Certificate</li>
+                                </ul>
+                            </li>
+                            <li>Upload document images (front and back)</li>
+                            <li>Submit the form</li>
+                            <li>Save the reference number for tracking</li>
+                        </ol>
+
+                        <h3>Tracking Verification Status</h3>
+                        <ol>
+                            <li>Visit the tracking page</li>
+                            <li>Enter reference number</li>
+                            <li>View current status</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Guide Section -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="admin-guide">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAdminGuide">
+                        <i class="fas fa-user-shield me-2"></i>Admin Guide
+                    </button>
+                </h2>
+                <div id="collapseAdminGuide" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                    <div class="accordion-body">
+                        <h3>Admin Panel Access</h3>
+                        <ol>
+                            <li>Visit /admin</li>
+                            <li>Login with admin credentials</li>
+                            <li>Default credentials:
+                                <pre><code>Username: admin
+Password: admin123</code></pre>
+                            </li>
+                        </ol>
+
+                        <div class="warning">
+                            <strong>Warning:</strong> Change default admin credentials immediately after first login!
+                        </div>
+
+                        <h3>Managing Verification Requests</h3>
+                        <ol>
+                            <li>View pending requests</li>
+                            <li>Review submitted documents</li>
+                            <li>Verify or reject requests</li>
+                            <li>Add comments if needed</li>
+                            <li>Track verification history</li>
+                        </ol>
+
+                        <h3>System Settings</h3>
+                        <ul>
+                            <li>Email configuration</li>
+                            <li>User management</li>
+                            <li>System logs</li>
+                            <li>Backup management</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Troubleshooting Section -->
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="troubleshooting">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTroubleshooting">
+                        <i class="fas fa-wrench me-2"></i>Troubleshooting
+                    </button>
+                </h2>
+                <div id="collapseTroubleshooting" class="accordion-collapse collapse" data-bs-parent="#guideAccordion">
+                    <div class="accordion-body">
+                        <h3>Common Issues</h3>
+                        
+                        <h4>Database Connection Error</h4>
+                        <ul>
+                            <li>Check database credentials</li>
+                            <li>Verify MySQL service is running</li>
+                            <li>Check database user permissions</li>
+                        </ul>
+
+                        <h4>Upload Issues</h4>
+                        <ul>
+                            <li>Check upload directory permissions</li>
+                            <li>Verify PHP upload limits in php.ini</li>
+                            <li>Check file size and type restrictions</li>
+                        </ul>
+
+                        <h4>Email Problems</h4>
+                        <ul>
+                            <li>Verify SMTP settings</li>
+                            <li>Check server firewall settings</li>
+                            <li>Test with different email providers</li>
+                        </ul>
+
+                        <div class="note">
+                            <strong>Support:</strong> For additional help, please open an issue on GitHub or contact the maintainers.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Clipboard.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script>
+        // Initialize clipboard.js
+        document.addEventListener('DOMContentLoaded', function() {
+            const clipboardBtns = document.querySelectorAll('.copy-btn');
+            
+            clipboardBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const code = this.previousElementSibling.textContent;
+                    navigator.clipboard.writeText(code).then(() => {
+                        // Change button icon temporarily
+                        const icon = this.querySelector('i');
+                        icon.className = 'fas fa-check';
+                        setTimeout(() => {
+                            icon.className = 'far fa-copy';
+                        }, 2000);
+                    });
+                });
+            });
+
+            // Initialize Bootstrap tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+</body>
+</html> 
